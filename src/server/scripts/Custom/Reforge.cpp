@@ -1,23 +1,21 @@
-#include "ScriptPCH.h"
-
 /*
-Reforging by Rochet2
-https://rochet2.github.io/?page=Transmogrification
+ * Copyright (C) 2013-2015 DeathCore <http://www.noffearrdeathproject.net/>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
-Rules of thumb:
-Item can be reforged once.
-Item reforge wont show to anyone but you in tooltips. Stats will be there nevertheless.
-You will see the increased stats on all tooltips of the same item you reforged.
-You can disable the stat changes to tooltips by setting send_cache_packets to false.
-Reforges are stripped when you mail, ah, guildbank the item etc. Only YOU can have the reforge.
-Only item base stats are reforgable. Enchants and random stats are not.
-
-This script is made blizzlike. This means that the reforgable stats etc are from CATACLYSM!
-I have been informed that some stats were removed etc that would be important to be reforgable.
-However I do not know what those stats are currently. Do look through the statTypes to add whatever you want.
-Edit IsReforgable is you want to tweak requirements
-
-*/
+#include "ScriptPCH.h"
 
 static const bool send_cache_packets = true;    // change player cache?
 
