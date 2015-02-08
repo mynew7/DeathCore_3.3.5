@@ -1184,7 +1184,15 @@ enum TrinityStrings
     // Use for custom patches             11000-11999
     LANG_AUTO_BROADCAST                 = 11000,
     LANG_INVALID_REALMID                = 11001,
-
+	
+	// Vip Commands
+	LANG_PLAYER_NOT_VIP                 = 11007,
+	LANG_VIP_COMMAND_DISABLED           = 11008,
+	LANG_VIP_ERROR                      = 11009,
+	LANG_VIP_ARENA_ERROR                = 11010,
+	LANG_VIP_INCORRECT_VALUE            = 11011,
+	LANG_VIP_FROST_ERROR                = 11012,
+	
     // Show Kick in world
     LANG_COMMAND_KICKMESSAGE_WORLD = 11002,
 

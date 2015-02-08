@@ -456,16 +456,20 @@ void World::LoadConfigSettings(bool reload)
     rate_values[RATE_DROP_ITEM_REFERENCED_AMOUNT] = sConfigMgr->GetFloatDefault("Rate.Drop.Item.ReferencedAmount", 1.0f);
     rate_values[RATE_DROP_MONEY]  = sConfigMgr->GetFloatDefault("Rate.Drop.Money", 1.0f);
     rate_values[RATE_XP_KILL]     = sConfigMgr->GetFloatDefault("Rate.XP.Kill", 1.0f);
-    rate_values[RATE_XP_QUEST]    = sConfigMgr->GetFloatDefault("Rate.XP.Quest", 1.0f);
-    rate_values[RATE_XP_EXPLORE]  = sConfigMgr->GetFloatDefault("Rate.XP.Explore", 1.0f);
-    rate_values[RATE_REPAIRCOST]  = sConfigMgr->GetFloatDefault("Rate.RepairCost", 1.0f);
+	rate_values[RATE_XP_KILL_PREMIUM] = sConfigMgr->GetFloatDefault("Rate.XP.Kill.Premium", 1.0f);
+	rate_values[RATE_XP_QUEST]    = sConfigMgr->GetFloatDefault("Rate.XP.Quest", 1.0f);
+	rate_values[RATE_XP_QUEST_PREMIUM] = sConfigMgr->GetFloatDefault("Rate.XP.Quest.Premium", 1.0f);
+	rate_values[RATE_XP_EXPLORE]  = sConfigMgr->GetFloatDefault("Rate.XP.Explore", 1.0f);
+	rate_values[RATE_XP_EXPLORE_PREMIUM] = sConfigMgr->GetFloatDefault("Rate.XP.Explore.Premium", 1.0f);
+	rate_values[RATE_REPAIRCOST]  = sConfigMgr->GetFloatDefault("Rate.RepairCost", 1.0f);
     if (rate_values[RATE_REPAIRCOST] < 0.0f)
     {
         TC_LOG_ERROR("server.loading", "Rate.RepairCost (%f) must be >=0. Using 0.0 instead.", rate_values[RATE_REPAIRCOST]);
         rate_values[RATE_REPAIRCOST] = 0.0f;
     }
     rate_values[RATE_REPUTATION_GAIN]  = sConfigMgr->GetFloatDefault("Rate.Reputation.Gain", 1.0f);
-    rate_values[RATE_REPUTATION_LOWLEVEL_KILL]  = sConfigMgr->GetFloatDefault("Rate.Reputation.LowLevel.Kill", 1.0f);
+	rate_values[RATE_REPUTATION_GAIN_PREMIUM] = sConfigMgr->GetFloatDefault("Rate.Reputation.Gain.Premium", 1.0f);
+	rate_values[RATE_REPUTATION_LOWLEVEL_KILL]  = sConfigMgr->GetFloatDefault("Rate.Reputation.LowLevel.Kill", 1.0f);
     rate_values[RATE_REPUTATION_LOWLEVEL_QUEST]  = sConfigMgr->GetFloatDefault("Rate.Reputation.LowLevel.Quest", 1.0f);
     rate_values[RATE_REPUTATION_RECRUIT_A_FRIEND_BONUS] = sConfigMgr->GetFloatDefault("Rate.Reputation.RecruitAFriendBonus", 0.1f);
     rate_values[RATE_CREATURE_NORMAL_DAMAGE]          = sConfigMgr->GetFloatDefault("Rate.Creature.Normal.Damage", 1.0f);
@@ -492,7 +496,8 @@ void World::LoadConfigSettings(bool reload)
     rate_values[RATE_AUCTION_DEPOSIT] = sConfigMgr->GetFloatDefault("Rate.Auction.Deposit", 1.0f);
     rate_values[RATE_AUCTION_CUT] = sConfigMgr->GetFloatDefault("Rate.Auction.Cut", 1.0f);
     rate_values[RATE_HONOR] = sConfigMgr->GetFloatDefault("Rate.Honor", 1.0f);
-    rate_values[RATE_INSTANCE_RESET_TIME] = sConfigMgr->GetFloatDefault("Rate.InstanceResetTime", 1.0f);
+	rate_values[RATE_HONOR_PREMIUM] = sConfigMgr->GetFloatDefault("Rate.Honor.Premium", 1.0f);
+	rate_values[RATE_INSTANCE_RESET_TIME] = sConfigMgr->GetFloatDefault("Rate.InstanceResetTime", 1.0f);
     rate_values[RATE_TALENT] = sConfigMgr->GetFloatDefault("Rate.Talent", 1.0f);
     if (rate_values[RATE_TALENT] < 0.0f)
     {
@@ -1230,7 +1235,20 @@ void World::LoadConfigSettings(bool reload)
     // misc
     m_bool_configs[CONFIG_PDUMP_NO_PATHS] = sConfigMgr->GetBoolDefault("PlayerDump.DisallowPaths", true);
     m_bool_configs[CONFIG_PDUMP_NO_OVERWRITE] = sConfigMgr->GetBoolDefault("PlayerDump.DisallowOverwrite", true);
-    m_bool_configs[CONFIG_UI_QUESTLEVELS_IN_DIALOGS] = sConfigMgr->GetBoolDefault("UI.ShowQuestLevelsInDialogs", false);
+	m_bool_configs[CONFIG_UI_QUESTLEVELS_IN_DIALOGS] = sConfigMgr->GetBoolDefault("UI.ShowQuestLevelsInDialogs", false);
+	
+	// Vip Commands
+	m_bool_configs[CONFIG_VIP_DEBUFF_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Debuff.Command", true);
+	m_bool_configs[CONFIG_VIP_BANK_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Bank.Command", true);
+    m_bool_configs[CONFIG_VIP_REPAIR_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Repair.Command", true);
+    m_bool_configs[CONFIG_VIP_RESET_TALENTS_COMMAND] = sConfigMgr->GetBoolDefault("VIP.Reset.Talents.Command", true);
+    m_bool_configs[CONFIG_VIP_TAXI_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Taxi.Command", true);
+    m_bool_configs[CONFIG_VIP_HOME_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Home.Command", true);
+    m_bool_configs[CONFIG_VIP_CAPITAL_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Capital.Command", true);
+	m_bool_configs[CONFIG_VIP_EXCHANGE_ARENA_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Exchange.Arena.Command",true);
+	m_bool_configs[CONFIG_VIP_EXCHANGE_FROST_COMMAND] = sConfigMgr->GetBoolDefault("Vip.Exchange.Frost.Command",true);
+	m_int_configs[CONFIG_VIP_RATE_EXHANGE_HONOR_IN_ARENA]  = sConfigMgr->GetIntDefault("Vip.Rate.Exchange.Honor.In.Arena", 300);
+	m_int_configs[CONFIG_VIP_RATE_EXHANGE_TRIUMPH_IN_FROST]  = sConfigMgr->GetIntDefault("Vip.Rate.Exchange.Triumph.In.Frost", 10);
 
     // Wintergrasp battlefield
     m_bool_configs[CONFIG_WINTERGRASP_ENABLE] = sConfigMgr->GetBoolDefault("Wintergrasp.Enable", false);

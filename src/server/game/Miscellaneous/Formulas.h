@@ -187,7 +187,6 @@ namespace Trinity
                 xpMod *= sWorld->getRate(RATE_XP_KILL);
                 gain = uint32(gain * xpMod);
             }
-
             sScriptMgr->OnGainCalculation(gain, player, u);
             return gain;
         }
