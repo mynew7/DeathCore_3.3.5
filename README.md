@@ -1,10 +1,10 @@
 # ![logo](http://i.imgur.com/3XzR93r.png)
 
 
-## DeathCore 3.3.5a - New Source - Scripts
+# DeathCore 3.3.5a - New Source - Scripts
 =====================
 
-#Informações Gerais do Projeto
+##Informações Gerais do Projeto
 
 Patch 3.3.5a - NDP-DB 335.11.58
 
@@ -20,8 +20,7 @@ Esta é a nova source da DeathCore que estamos atualizando devagar, adicionando 
 As pessoas estão vendendo essa source para ter lucros para si mesmo, eu estou dando-lo gratuitamente.
 
 
-Links para fazer download:
-
+##Arquivos Necessários
 
 [dbc](https://mega.co.nz/#!jxsXXKRD!FnPIPcIcTLVz_NaGhqCIwff84vSEE-uRglsqOLkGNHE)
 
@@ -31,12 +30,13 @@ Links para fazer download:
 
 [vmaps](https://mega.co.nz/#!G8kEkaYC!mH3GWasxMYnqFjeeDQZmitaetrJXIX80HJ5Cqv3gkIo)
 
+
+##Databases
+
 [Todas as Databases - Em Breve](#)
 
-[Patch - Update - Projeto World Of Warcraft Tradução em Português [BR] - Em Breve](#)
 
-
-# ![logo](http://i.imgur.com/Ues1gtC.png)
+## ![logo](http://i.imgur.com/Ues1gtC.png)
 
 
 ## Introdução
