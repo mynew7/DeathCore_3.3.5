@@ -1,7 +1,6 @@
 # ![logo](http://i.imgur.com/3XzR93r.png)
 
 # DeathCore 3.3.5a - New Source - Scripts
-=====================
 
 ##Informações Gerais do Projeto
 
