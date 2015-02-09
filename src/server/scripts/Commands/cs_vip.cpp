@@ -36,7 +36,7 @@ public:
 
         { 
 	    {"Buff", SEC_VIP, true, &HandleVipBuffCommand, "", NULL},
-		{ "Shop",	    SEC_VIP,     true, &HandleVipMallCommand,         "", NULL },
+		{ "Sala-Vip",	    SEC_VIP,     true, &HandleVipMallCommand,         "", NULL },
         { "Mudar-Raça",    SEC_VIP,  false, &HandleChangeRaceCommand,             "", NULL },
 	    { "Mudar-Facção",	SEC_VIP,  false, &HandleChangeFactionCommand,		"", NULL },
 	    { "Mudar-Visual",	SEC_VIP,  false, &HandleCustomizeCommand,		"", NULL },

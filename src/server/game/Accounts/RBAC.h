@@ -680,7 +680,8 @@ enum RBACPermissions
     RBAC_PERM_COMMAND_WP_SHOW                                = 774,
     RBAC_PERM_COMMAND_MODIFY_CURRENCY                        = 775, // only 4.3.4
     RBAC_PERM_COMMAND_DEBUG_PHASE                            = 776, // only 4.3.4
-    RBAC_PERM_COMMAND_MAILBOX                                = 777,
+    RBAC_PERM_COMMAND_WORLD_CHAT                             = 1009,
+	RBAC_PERM_COMMAND_MAILBOX                                = 777,
     RBAC_PERM_COMMAND_AHBOT                                  = 778,
     RBAC_PERM_COMMAND_AHBOT_ITEMS                            = 779,
     RBAC_PERM_COMMAND_AHBOT_ITEMS_GRAY                       = 780,
@@ -700,7 +701,6 @@ enum RBACPermissions
     RBAC_PERM_COMMAND_GUILD_INFO                             = 794,
     RBAC_PERM_COMMAND_INSTANCE_SET_BOSS_STATE                = 795,
     RBAC_PERM_COMMAND_INSTANCE_GET_BOSS_STATE                = 796,
-
     // custom permissions 1000+
     RBAC_PERM_MAX
 };
