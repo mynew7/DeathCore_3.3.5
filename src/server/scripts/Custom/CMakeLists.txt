@@ -11,7 +11,16 @@
 set(scripts_STAT_SRCS
   ${scripts_STAT_SRCS}
 # This scripts are not yet added. Need sql for each one of them
+	Custom/anti_divulgador.cpp
+	Custom/anti_farm.cpp
+	Custom/duelReset.cpp
+	Custom/ler_spell_level.cpp
+	Custom/morphs_npc.cpp
+	Custom/npc_visualweapon.cpp
 	Custom/Reforge.cpp
+	Custom/vanilla_title_npc.cpp
+	Custom/Reforge.cpp
+	Custom/worldchat.cpp
 	
 
    
