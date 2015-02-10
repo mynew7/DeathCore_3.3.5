@@ -1415,7 +1415,6 @@ void AddBattlegroundScripts()
 
 #ifdef SCRIPTS
 /* This is where custom scripts' loading functions should be declared. */
-void AddSC_REFORGER_NPC();
 void AddSC_vipcommands();
 void AddSC_System_Censure();
 void AddSC_NoFarming();
@@ -1425,7 +1424,6 @@ void AddSC_morphs_npc();
 void AddSC_NPC_VisualWeapon();
 void AddSC_REFORGER_NPC();
 void AddSC_Title_gossip_codebox();
-void AddSC_cs_world_chat();
 
 #endif
 
@@ -1433,7 +1431,6 @@ void AddCustomScripts()
 {
 #ifdef SCRIPTS
     /* This is where custom scripts should be added. */
- AddSC_REFORGER_NPC();
  AddSC_vipcommands();
  AddSC_System_Censure();
  AddSC_NoFarming();
@@ -1443,7 +1440,6 @@ void AddCustomScripts()
  AddSC_NPC_VisualWeapon();
  AddSC_REFORGER_NPC();
  AddSC_Title_gossip_codebox();
- AddSC_cs_world_chat();
 
 #endif
 }

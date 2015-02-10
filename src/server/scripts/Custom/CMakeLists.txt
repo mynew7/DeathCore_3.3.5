@@ -19,7 +19,6 @@ set(scripts_STAT_SRCS
 	Custom/npc_visualweapon.cpp
 	Custom/Reforge.cpp
 	Custom/vanilla_title_npc.cpp
-	Custom/worldchat.cpp
 	
 
    
