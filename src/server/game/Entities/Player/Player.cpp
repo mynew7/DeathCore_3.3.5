@@ -19,6 +19,7 @@
 #include "Player.h"
 #include "AccountMgr.h"
 #include "AchievementMgr.h"
+#include "AnticheatMgr.h"
 #include "ArenaTeam.h"
 #include "ArenaTeamMgr.h"
 #include "Battlefield.h"
@@ -5544,7 +5545,11 @@ void Player::RepopAtGraveyard()
 
 bool Player::CanJoinConstantChannelInZone(ChatChannelsEntry const* channel, AreaTableEntry const* zone)
 {
-    if (channel->flags & CHANNEL_DBC_FLAG_ZONE_DEP && zone->flags & AREA_FLAG_ARENA_INSTANCE)
+	// Player can join LFG anywhere
+	if (channel->flags & CHANNEL_DBC_FLAG_LFG)
+		return true;
+
+   if (channel->flags & CHANNEL_DBC_FLAG_ZONE_DEP && zone->flags & AREA_FLAG_ARENA_INSTANCE)
         return false;
 
     if ((channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY) && (!(zone->flags & AREA_FLAG_SLAVE_CAPITAL)))
@@ -19530,7 +19535,13 @@ void Player::SaveToDB(bool create /*=false*/)
 
     CharacterDatabase.CommitTransaction(trans);
 
-    // save pet (hunter pet level and experience and all type pets health/mana).
+    // we save the data here to prevent spamming
+    sAnticheatMgr->SavePlayerData(this);
+
+    // in this way we prevent to spam the db by each report made!
+    // sAnticheatMgr->SavePlayerData(this);
+
+	// save pet (hunter pet level and experience and all type pets health/mana).
     if (Pet* pet = GetPet())
         pet->SavePetToDB(PET_SAVE_AS_CURRENT);
 }

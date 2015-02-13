@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2013-2015 DeathCore <http://www.noffearrdeathproject.net/>
- * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -16,6 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "AnticheatMgr.h"
 #include "Unit.h"
 #include "Common.h"
 #include "Battlefield.h"
@@ -12195,7 +12195,10 @@ void Unit::SetVisible(bool x)
 
 void Unit::UpdateSpeed(UnitMoveType mtype, bool forced)
 {
-    int32 main_speed_mod  = 0;
+    //if (this->ToPlayer())
+    //    sAnticheatMgr->DisableAnticheatDetection(this->ToPlayer());
+
+	int32 main_speed_mod  = 0;
     float stack_bonus     = 1.0f;
     float non_stack_bonus = 1.0f;
 

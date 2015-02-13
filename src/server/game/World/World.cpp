@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2013-2015 DeathCore <http://www.noffearrdeathproject.net/>
- * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -27,6 +26,7 @@
 #include "AuctionHouseMgr.h"
 #include "BattlefieldMgr.h"
 #include "BattlegroundMgr.h"
+#include "AnticheatMgr.h"
 #include "CalendarMgr.h"
 #include "Channel.h"
 #include "CharacterDatabaseCleaner.h"
@@ -1250,6 +1250,12 @@ void World::LoadConfigSettings(bool reload)
 	m_int_configs[CONFIG_VIP_RATE_EXHANGE_HONOR_IN_ARENA]  = sConfigMgr->GetIntDefault("Vip.Rate.Exchange.Honor.In.Arena", 300);
 	m_int_configs[CONFIG_VIP_RATE_EXHANGE_TRIUMPH_IN_FROST]  = sConfigMgr->GetIntDefault("Vip.Rate.Exchange.Triumph.In.Frost", 10);
 
+    m_bool_configs[CONFIG_ANTICHEAT_ENABLE] = sConfigMgr->GetBoolDefault("Anticheat.Enable", true);
+    m_int_configs[CONFIG_ANTICHEAT_REPORTS_INGAME_NOTIFICATION] = sConfigMgr->GetIntDefault("Anticheat.ReportsForIngameWarnings", 70);
+    m_int_configs[CONFIG_ANTICHEAT_DETECTIONS_ENABLED] = sConfigMgr->GetIntDefault("Anticheat.DetectionsEnabled",31);
+    m_int_configs[CONFIG_ANTICHEAT_MAX_REPORTS_FOR_DAILY_REPORT] = sConfigMgr->GetIntDefault("Anticheat.MaxReportsForDailyReport",70);
+	m_bool_configs[CONFIG_BAN_PLAYER] = sConfigMgr->GetBoolDefault("Anticheat.Ban", true);
+	
     // Wintergrasp battlefield
     m_bool_configs[CONFIG_WINTERGRASP_ENABLE] = sConfigMgr->GetBoolDefault("Wintergrasp.Enable", false);
     m_int_configs[CONFIG_WINTERGRASP_PLR_MAX] = sConfigMgr->GetIntDefault("Wintergrasp.PlayerMax", 100);
@@ -2914,6 +2920,8 @@ void World::ResetDailyQuests()
 
     // change available dailies
     sPoolMgr->ChangeDailyQuests();
+	
+    sAnticheatMgr->ResetDailyReportStates();
 }
 
 void World::LoadDBAllowedSecurityLevel()

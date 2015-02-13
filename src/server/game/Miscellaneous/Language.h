@@ -1184,6 +1184,7 @@ enum TrinityStrings
     // Use for custom patches             11000-11999
     LANG_AUTO_BROADCAST                 = 11000,
     LANG_INVALID_REALMID                = 11001,
+	LANG_BAN_CHEATER                    = 11010,
 	
 	// Vip Commands
 	LANG_PLAYER_NOT_VIP                 = 11007,
