@@ -2,6 +2,8 @@
 
 # DeathCore 3.3.5a - New Source - Scripts
 
+`DeathCore_3.3.5`:[![Build Status](https://travis-ci.org/NoffearrDeathProjecT/DeathCore_3.3.5.svg?branch=master)](https://travis-ci.org/NoffearrDeathProjecT/DeathCore_3.3.5)
+
 ##Informações Gerais do Projeto
 
 Patch 3.3.5a - NDP-DB 335.11.58
