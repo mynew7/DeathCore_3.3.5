@@ -2919,3 +2919,16 @@ Anticheat.DetectionsEnabled = 31
 
 Anticheat.MaxReportsForDailyReport = 70
 ###################################################################################################
+# FAKE PLAYERS
+###################################################################################################
+#    Fake.WHO.List
+#        Add fake players to fill in WHO LIST (who is online list, "O" button) if there is less then
+#        49 real players online
+#        Default: 0 (disabled)
+#                 1 (enabled)
+
+Fake.WHO.List = 0
+Fake.WHO.Online.Interval = 5
+Fake.WHO.LevelUp.Interval = 2
+
+###################################################################################################
