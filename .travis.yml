@@ -1,3 +1,13 @@
+# Copyright (C) 2013-2015 DeathCore <http://www.noffearrdeathproject.net/>
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 language: cpp
 compiler:
   - clang
@@ -14,12 +24,20 @@ before_install:
   - sudo apt-get -qq install libssl-dev libmysqlclient15-dev libmysql++-dev libreadline6-dev zlib1g-dev libbz2-dev libzmq3-dev
   - sudo apt-get -qq install libboost1.55-dev libboost-thread1.55-dev libboost-filesystem1.55-dev libboost-system1.55-dev libboost-program-options1.55-dev
 
+install:
+  - mysql -uroot -e 'create database test_mysql;'
+  - mkdir bin
+  - cd bin
+  - cmake ../ -DWITH_WARNINGS=1 -DWITH_COREDEBUG=0 -DUSE_COREPCH=1 -DUSE_SCRIPTPCH=1 -DTOOLS=1 -DSCRIPTS=1 -DSERVERS=1 -DNOJEM=1 -DCMAKE_BUILD_TYPE=Release
+
 script:
-  - mkdir build
-  - cd build
-  - cmake ../ -DSCRIPTS=1 -DTOOLS=1
-  - make -j16
-  
-  notifications:
-  email:
-    - suporte@noffearrdeathproject.net
+  - cd ..
+  - cd bin
+  - make -j 10
+
+notifications:
+  irc:
+    channels:
+      - "irc.rizon.net#NoffearrDeathProjecT"
+    on_success: always
+    on_failure: always
