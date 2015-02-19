@@ -31,9 +31,9 @@ public:
         static ChatCommand anticheatCommandTable[] =
         {
             { "geral",         SEC_GAMEMASTER,     true,  &HandleAntiCheatGlobalCommand,         "", NULL },
-            { "player",         SEC_GAMEMASTER,     true,  &HandleAntiCheatPlayerCommand,         "", NULL },
-            { "delete",         SEC_ADMINISTRATOR,  true,  &HandleAntiCheatDeleteCommand,         "", NULL },
-            { "handle",         SEC_ADMINISTRATOR,  true,  &HandleAntiCheatHandleCommand,         "", NULL },
+            { "info",         SEC_GAMEMASTER,     true,  &HandleAntiCheatPlayerCommand,         "", NULL },
+            { "deletar",         SEC_ADMINISTRATOR,  true,  &HandleAntiCheatDeleteCommand,         "", NULL },
+            { "ativar",         SEC_ADMINISTRATOR,  true,  &HandleAntiCheatHandleCommand,         "", NULL },
             { "prender",         SEC_GAMEMASTER,     true,  &HandleAnticheatJailCommand,         "", NULL },
             { "aviso",           SEC_GAMEMASTER,     true,  &HandleAnticheatWarnCommand,         "", NULL },
             { NULL,             0,                     false, NULL,                                           "", NULL }
@@ -74,7 +74,7 @@ public:
         WorldPacket data;
 
         // need copy to prevent corruption by strtok call in LineFromMessage original string
-        char* buf = strdup("The anticheat system has reported several times that you may be cheating. You will be monitored to confirm if this is accurate.");
+        char* buf = strdup("O Sistema Anti Hacker informou várias vezes que você pode esta usando algum tipo de Hacker. Você será monitorado a partir de agora!");
         char* pos = buf;
 
         while (char* line = handler->LineFromMessage(pos))
@@ -157,7 +157,7 @@ public:
             normalizePlayerName(strCommand);
             Player* player = sObjectAccessor->FindPlayerByName(strCommand.c_str()); //get player by name
             if (!player)
-                handler->PSendSysMessage("Player doesn't exist");
+                handler->PSendSysMessage("Jogador não existe!");
             else
                 sAnticheatMgr->AnticheatDeleteCommand(player->GetGUIDLow());
         }
@@ -195,7 +195,7 @@ public:
 
         if (!guid)
         {
-            handler->PSendSysMessage("There is no player.");
+            handler->PSendSysMessage("Não há nenhum jogador!");
             return true;
         }
 
@@ -208,11 +208,11 @@ public:
         uint32 teleportplane_reports = sAnticheatMgr->GetTypeReports(guid,4);
         uint32 climb_reports = sAnticheatMgr->GetTypeReports(guid,5);
 
-        handler->PSendSysMessage("Information about player %s",player->GetName().c_str());
-        handler->PSendSysMessage("Average: %f || Total Reports: %u ",average,total_reports);
-        handler->PSendSysMessage("Speed Reports: %u || Fly Reports: %u || Jump Reports: %u ",speed_reports,fly_reports,jump_reports);
-        handler->PSendSysMessage("Walk On Water Reports: %u  || Teleport To Plane Reports: %u",waterwalk_reports,teleportplane_reports);
-        handler->PSendSysMessage("Climb Reports: %u", climb_reports);
+        handler->PSendSysMessage("Informações sobre o Jogador %s",player->GetName().c_str());
+        handler->PSendSysMessage("Média: %f || Total de Reports: %u ",average,total_reports);
+        handler->PSendSysMessage("Speed Hacker: %u || Fly Hacker: %u || Jump Hacker: %u ",speed_reports,fly_reports,jump_reports);
+        handler->PSendSysMessage("Walk On Water Hacker: %u  || Teleport To Plane Hacker: %u",waterwalk_reports,teleportplane_reports);
+        handler->PSendSysMessage("Climb Hacker: %u", climb_reports);
 
         return true;
     }
@@ -234,12 +234,12 @@ public:
         if (strCommand.compare("on") == 0)
         {
             sWorld->setBoolConfig(CONFIG_ANTICHEAT_ENABLE,true);
-            handler->SendSysMessage("The Anticheat System is now: Enabled!");
+            handler->SendSysMessage("O Sistema Anti Hacker esta: Ativado!");
         }
         else if (strCommand.compare("off") == 0)
         {
             sWorld->setBoolConfig(CONFIG_ANTICHEAT_ENABLE,false);
-            handler->SendSysMessage("The Anticheat System is now: Disabled!");
+            handler->SendSysMessage("O Sistema Anti Hacker esta: Desativado!");
         }
 
         return true;
@@ -249,7 +249,7 @@ public:
     {
         if (!sWorld->getBoolConfig(CONFIG_ANTICHEAT_ENABLE))
         {
-            handler->PSendSysMessage("The Anticheat System is disabled.");
+            handler->PSendSysMessage("O Sistema Anti Hacker esta: Desativado!");
             return true;
         }
 
